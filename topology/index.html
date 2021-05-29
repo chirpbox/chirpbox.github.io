@@ -176,12 +176,14 @@
     <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-  <!-- <h2>Topology</h2> -->
+    <!-- <h2>Topology</h2> -->
     <section class="markdown-content"><p>This is the current topology of ChirpBox nodes.</p>
 <p><span style="font-size: 1.4em;font-weight: bold;">Monitoring setup:</span><br>Nodes on ChirpBox send same amount of packets in a round-robin manner on each spreading factor and channel. The packet delivery ratio (PDR) is then calculated as the ratio of received by other nodes and transmitted packets from the sender.</p>
 <p><span style="font-size: 1.4em;font-weight: bold;">Note:</span><br><strong>Node color:</strong> The depth representation of node color is based on the degree of the node. Higher the degree, darker the color.<br><strong>Line color:</strong> The depth representation of line color is based on the PDR of the connection. Higher the PDR, darker the color.<br><strong>Red line and arrow:</strong> The link with the max-hop from source node to target node.</p>
-<p>Each channel shows topology on 6 SFs (SF 7 to SF 12).<br>The time shown in figures is the local monitor time of ChirpBox nodes (Shanghai time, UTC+08:00).</p>
+<p>Each channel shows topology on 6 SFs (SF 7 to SF 12).<br>The time shown in figures is the local monitor time (Shanghai time, UTC+08:00) of ChirpBox nodes.</p>
 <p><span style="font-size: 1.4em;font-weight: bold;">Glossary:</span><br><strong>SF:</strong> Spreading factor<br><strong>CH:</strong> Channel (kHz)<br><strong>TP:</strong> Tx power (dBm)<br><strong>PL:</strong> Packet length (byte)</p>
+<p><span style="font-size: 1.4em;font-weight: bold;">Topology:</span></p>
+<p><strong>Last update:</strong> <span id="demo"></span>&emsp;&emsp;<strong>Local time:</strong> <span id="time"> </span></p>
 <h1 id="470-MHz"><a href="#470-MHz" class="headerlink" title="470 MHz"></a>470 MHz</h1><img src="/images/topology/Networktopology_470000.gif" width="500">
 
 <h1 id="480-MHz"><a href="#480-MHz" class="headerlink" title="480 MHz"></a>480 MHz</h1><img src="/images/topology/Networktopology_480000.gif" width="500">
@@ -196,7 +198,7 @@
   <!-- Article END -->
   <!-- Catalog START -->
   
-    <aside class="catalog-container">
+  <aside class="catalog-container">
   <div class="toc-main"style="color:#C93819">
     <!-- <strong class="toc-title">Topology</strong> -->
     
@@ -213,11 +215,11 @@
     var url = 'http://example.com/topology/';
     var banner = ''
     $('#article-banner').css({
-        'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
-      })
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
 
     // error image
-    $(".markdown-content img").on('error', function() {
+    $(".markdown-content img").on('error', function () {
       $(this).attr('src', 'http://file.muyutech.com/error-img.png')
       $(this).css({
         'cursor': 'default'
@@ -225,7 +227,7 @@
     })
 
     // zoom image
-    $(".markdown-content img").on('click', function() {
+    $(".markdown-content img").on('click', function () {
       var src = $(this).attr('src')
       if (src !== 'http://file.muyutech.com/error-img.png') {
         var imageW = $(this).width()
@@ -236,7 +238,8 @@
         zoom = zoom > 2 ? 2 : zoom
         var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
         $('.image-view-wrap').addClass('wrap-active')
         $('.image-view-wrap img').css({
           'width': `${imageW}`,
@@ -244,7 +247,7 @@
         })
         $('html').css('overflow', 'hidden')
 
-        $('.image-view-wrap').on('click', function() {
+        $('.image-view-wrap').on('click', function () {
           $(this).remove()
           $('html').attr('style', '')
         })
@@ -252,7 +255,44 @@
     })
   })();
 </script>
+<script>
+  function updateClock() {
+    var now = new Date(), // current date
+      time = now.toLocaleTimeString('en-US', {
+        hour12: false
+      });
 
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x), // current date
+      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'
+      ]; // you get the idea
+    time = now.toLocaleTimeString('en-US', {
+      hour12: false
+    });
+
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

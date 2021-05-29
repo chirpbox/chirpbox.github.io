@@ -176,7 +176,7 @@
     <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-  <!-- <h2>diy_chirpbox</h2> -->
+    <!-- <h2>diy_chirpbox</h2> -->
     <section class="markdown-content"><p>You can follow this page to build your own ChirpBox from scratch.</p>
 <h1 id="0-Materials"><a href="#0-Materials" class="headerlink" title="0. Materials"></a>0. Materials</h1><p>First of all, please prepare the materials which are required to make a hardware ChirpBox node.<br>A BOM list (.xlsx file) is available <a href="/assets/chirpbox_bom_list.xlsx">here</a>.</p>
 <ul>
@@ -413,7 +413,7 @@ Here, COM_port is serial port connected with the control node.</li>
   <!-- Article END -->
   <!-- Catalog START -->
   
-    <aside class="catalog-container">
+  <aside class="catalog-container">
   <div class="toc-main"style="color:#C93819">
     <!-- <strong class="toc-title">diy_chirpbox</strong> -->
     
@@ -430,11 +430,11 @@ Here, COM_port is serial port connected with the control node.</li>
     var url = 'http://example.com/diy_chirpbox/';
     var banner = ''
     $('#article-banner').css({
-        'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
-      })
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
 
     // error image
-    $(".markdown-content img").on('error', function() {
+    $(".markdown-content img").on('error', function () {
       $(this).attr('src', 'http://file.muyutech.com/error-img.png')
       $(this).css({
         'cursor': 'default'
@@ -442,7 +442,7 @@ Here, COM_port is serial port connected with the control node.</li>
     })
 
     // zoom image
-    $(".markdown-content img").on('click', function() {
+    $(".markdown-content img").on('click', function () {
       var src = $(this).attr('src')
       if (src !== 'http://file.muyutech.com/error-img.png') {
         var imageW = $(this).width()
@@ -453,7 +453,8 @@ Here, COM_port is serial port connected with the control node.</li>
         zoom = zoom > 2 ? 2 : zoom
         var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
         $('.image-view-wrap').addClass('wrap-active')
         $('.image-view-wrap img').css({
           'width': `${imageW}`,
@@ -461,7 +462,7 @@ Here, COM_port is serial port connected with the control node.</li>
         })
         $('html').css('overflow', 'hidden')
 
-        $('.image-view-wrap').on('click', function() {
+        $('.image-view-wrap').on('click', function () {
           $(this).remove()
           $('html').attr('style', '')
         })
@@ -469,7 +470,44 @@ Here, COM_port is serial port connected with the control node.</li>
     })
   })();
 </script>
+<script>
+  function updateClock() {
+    var now = new Date(), // current date
+      time = now.toLocaleTimeString('en-US', {
+        hour12: false
+      });
 
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x), // current date
+      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'
+      ]; // you get the idea
+    time = now.toLocaleTimeString('en-US', {
+      hour12: false
+    });
+
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

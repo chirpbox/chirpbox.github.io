@@ -176,7 +176,7 @@
     <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-  <!-- <h2>get_started</h2> -->
+    <!-- <h2>get_started</h2> -->
     <section class="markdown-content"><p>ChirpBox provides two sets of permissions: <strong>User</strong> and <strong>Administrator</strong>.<br>This tutorial will show 1) how to prepare an experiment firmware image and 2) how to manage experiments (firmware dissemination and results collection).<br>You could order ChirpBox nodes by writing mail to <a href="mailto:ma.xiaoyuan.mail@gmail.com">us</a> or <a href="../diy_chirpbox/">build</a> a ChirpBox testbed by yourself.</p>
 <h1 id="0-Prerequisites"><a href="#0-Prerequisites" class="headerlink" title="0. Prerequisites"></a>0. Prerequisites</h1><p>The project is developed with integrated development environment (IDE) <a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>.<br>The source code is available <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox.git">here</a>.</p>
 <h1 id="1-User-firmware-preparation"><a href="#1-User-firmware-preparation" class="headerlink" title="1. User firmware preparation"></a>1. User firmware preparation</h1><p>Please add the <strong>Toggle</strong> tool in your own project (e.g., a wireless network protocol to be tested), recompile it, and generate the firmware for ChirpBox. Assuming your own project is also developed with <a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>, the specific steps would be:<br><strong>1.</strong> Open <code>Project-&gt;Properties</code>, go to <code>Paths and Symbols</code> in <code>C/C++ General</code>, add <code>ChirpBox/Miscellaneous/Toggle/Inc/</code> to the include directories.</p>
@@ -278,7 +278,7 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
   <!-- Article END -->
   <!-- Catalog START -->
   
-    <aside class="catalog-container">
+  <aside class="catalog-container">
   <div class="toc-main"style="color:#C93819">
     <!-- <strong class="toc-title">get_started</strong> -->
     
@@ -295,11 +295,11 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
     var url = 'http://example.com/get_started/';
     var banner = ''
     $('#article-banner').css({
-        'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
-      })
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
 
     // error image
-    $(".markdown-content img").on('error', function() {
+    $(".markdown-content img").on('error', function () {
       $(this).attr('src', 'http://file.muyutech.com/error-img.png')
       $(this).css({
         'cursor': 'default'
@@ -307,7 +307,7 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
     })
 
     // zoom image
-    $(".markdown-content img").on('click', function() {
+    $(".markdown-content img").on('click', function () {
       var src = $(this).attr('src')
       if (src !== 'http://file.muyutech.com/error-img.png') {
         var imageW = $(this).width()
@@ -318,7 +318,8 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
         zoom = zoom > 2 ? 2 : zoom
         var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
         $('.image-view-wrap').addClass('wrap-active')
         $('.image-view-wrap img').css({
           'width': `${imageW}`,
@@ -326,7 +327,7 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
         })
         $('html').css('overflow', 'hidden')
 
-        $('.image-view-wrap').on('click', function() {
+        $('.image-view-wrap').on('click', function () {
           $(this).remove()
           $('html').attr('style', '')
         })
@@ -334,7 +335,44 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
     })
   })();
 </script>
+<script>
+  function updateClock() {
+    var now = new Date(), // current date
+      time = now.toLocaleTimeString('en-US', {
+        hour12: false
+      });
 
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x), // current date
+      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'
+      ]; // you get the idea
+    time = now.toLocaleTimeString('en-US', {
+      hour12: false
+    });
+
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

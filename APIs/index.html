@@ -176,7 +176,7 @@
     <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-  <!-- <h2>APIs</h2> -->
+    <!-- <h2>APIs</h2> -->
     <section class="markdown-content"><p>This document illustrates APIs provided by ChirpBox with code explanation and demo project.</p>
 <h2 id="Parameters-injection"><a href="#Parameters-injection" class="headerlink" title="Parameters injection"></a>Parameters injection</h2><p>For benchmarking setting, users can change the LoRa radio parameter value without modifying the code. This is achieved by the method similar used in <a target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/document/8429499">D-Cube</a>.<br><a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Example/L476RG-demo">Example project</a> is detailed <a href="../get_started/#1-1-Example-project">here</a>.<br><strong>Project configuration:</strong><br><strong>1.</strong> As procedures in <a href="../get_started/#1-User-firmware-preparation">firmware preparation</a>, open <code>Project-&gt;Properties</code>, go to <code>Paths and Symbols</code> in <code>C/C++ General</code>, add <code>ChirpBox/Miscellaneous/Parameters-patch/Inc/</code> to the include directories.<br><strong>2.</strong> Add following codes in your <code>main.c</code> file.<br>before <code>main()</code> function (to declare the variable <code>fut_config</code>):</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> PRINTF(...) printf(__VA_ARGS__)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&quot;fut-param-settings.h&quot;</span></span></span><br></pre></td></tr></table></figure>
@@ -195,7 +195,7 @@
   <!-- Article END -->
   <!-- Catalog START -->
   
-    <aside class="catalog-container">
+  <aside class="catalog-container">
   <div class="toc-main"style="color:#C93819">
     <!-- <strong class="toc-title">APIs</strong> -->
     
@@ -212,11 +212,11 @@
     var url = 'http://example.com/APIs/';
     var banner = ''
     $('#article-banner').css({
-        'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
-      })
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
 
     // error image
-    $(".markdown-content img").on('error', function() {
+    $(".markdown-content img").on('error', function () {
       $(this).attr('src', 'http://file.muyutech.com/error-img.png')
       $(this).css({
         'cursor': 'default'
@@ -224,7 +224,7 @@
     })
 
     // zoom image
-    $(".markdown-content img").on('click', function() {
+    $(".markdown-content img").on('click', function () {
       var src = $(this).attr('src')
       if (src !== 'http://file.muyutech.com/error-img.png') {
         var imageW = $(this).width()
@@ -235,7 +235,8 @@
         zoom = zoom > 2 ? 2 : zoom
         var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
         $('.image-view-wrap').addClass('wrap-active')
         $('.image-view-wrap img').css({
           'width': `${imageW}`,
@@ -243,7 +244,7 @@
         })
         $('html').css('overflow', 'hidden')
 
-        $('.image-view-wrap').on('click', function() {
+        $('.image-view-wrap').on('click', function () {
           $(this).remove()
           $('html').attr('style', '')
         })
@@ -251,7 +252,44 @@
     })
   })();
 </script>
+<script>
+  function updateClock() {
+    var now = new Date(), // current date
+      time = now.toLocaleTimeString('en-US', {
+        hour12: false
+      });
 
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x), // current date
+      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'
+      ]; // you get the idea
+    time = now.toLocaleTimeString('en-US', {
+      hour12: false
+    });
+
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>

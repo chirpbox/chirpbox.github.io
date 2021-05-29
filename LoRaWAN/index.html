@@ -176,7 +176,7 @@
     <main class="app-body flex-box">
   <!-- Article START -->
   <article class="post-article">
-  <!-- <h2>LoRaWAN</h2> -->
+    <!-- <h2>LoRaWAN</h2> -->
     <section class="markdown-content"><p>This tutorial will show the setup of a LoRaWAN network, including configurations on gateway/end nodes and data workflow with scripts.</p>
 <h1 id="0-Prerequisites"><a href="#0-Prerequisites" class="headerlink" title="0. Prerequisites"></a>0. Prerequisites</h1><p>Hardware:</p>
 <ul>
@@ -416,7 +416,7 @@
   <!-- Article END -->
   <!-- Catalog START -->
   
-    <aside class="catalog-container">
+  <aside class="catalog-container">
   <div class="toc-main"style="color:#C93819">
     <!-- <strong class="toc-title">LoRaWAN</strong> -->
     
@@ -433,11 +433,11 @@
     var url = 'http://example.com/LoRaWAN/';
     var banner = ''
     $('#article-banner').css({
-        'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
-      })
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
 
     // error image
-    $(".markdown-content img").on('error', function() {
+    $(".markdown-content img").on('error', function () {
       $(this).attr('src', 'http://file.muyutech.com/error-img.png')
       $(this).css({
         'cursor': 'default'
@@ -445,7 +445,7 @@
     })
 
     // zoom image
-    $(".markdown-content img").on('click', function() {
+    $(".markdown-content img").on('click', function () {
       var src = $(this).attr('src')
       if (src !== 'http://file.muyutech.com/error-img.png') {
         var imageW = $(this).width()
@@ -456,7 +456,8 @@
         zoom = zoom > 2 ? 2 : zoom
         var transY = (($(window).height() - imageH) / 2).toFixed(2)
 
-        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="'+ src +'" /></div></div>')
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
         $('.image-view-wrap').addClass('wrap-active')
         $('.image-view-wrap img').css({
           'width': `${imageW}`,
@@ -464,7 +465,7 @@
         })
         $('html').css('overflow', 'hidden')
 
-        $('.image-view-wrap').on('click', function() {
+        $('.image-view-wrap').on('click', function () {
           $(this).remove()
           $('html').attr('style', '')
         })
@@ -472,7 +473,44 @@
     })
   })();
 </script>
+<script>
+  function updateClock() {
+    var now = new Date(), // current date
+      time = now.toLocaleTimeString('en-US', {
+        hour12: false
+      });
 
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x), // current date
+      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
+        'November', 'December'
+      ]; // you get the idea
+    time = now.toLocaleTimeString('en-US', {
+      hour12: false
+    });
+
+    // a cleaner way than string concatenation
+    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
     <div class="scroll-top">
   <span class="arrow-icon"></span>
 </div>
