@@ -343,7 +343,7 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
       });
 
     // a cleaner way than string concatenation
-    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+    date = now.toISOString().substring(0, 10);
 
     // set the content of the element with the ID time to the formatted string
     document.getElementById('time').innerHTML = [date, time].join(' ');
@@ -366,7 +366,7 @@ Admin uses Python scripts to manage firmware images, experiments, and results. T
     });
 
     // a cleaner way than string concatenation
-    date = [now.getFullYear(), now.getMonth(), now.getDate()].join('-');
+    date = now.toISOString().substring(0, 10);
 
     // set the content of the element with the ID time to the formatted string
     document.getElementById('demo').innerHTML = [date, time].join(' ');
