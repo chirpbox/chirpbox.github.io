@@ -190,6 +190,24 @@
 </ul>
 <h1 id="1-Gateway"><a href="#1-Gateway" class="headerlink" title="1. Gateway"></a>1. Gateway</h1><p><strong>1.</strong> Write the <a target="_blank" rel="noopener" href="https://downloads.rakwireless.com.cn/LoRaWAN%E6%A0%91%E8%8E%93%E6%B4%BE%E7%BD%91%E5%85%B3%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/RAK7243%28%E6%A0%91%E8%8E%93%E6%B4%BE3B%2B%29/%E5%9B%BA%E4%BB%B6/RAK7243_Latest_Firmware.zip">RAK7243 firmware image</a> in gateway, see how to write <a target="_blank" rel="noopener" href="https://downloads.rakwireless.com.cn/LoRaWAN%E6%A0%91%E8%8E%93%E6%B4%BE%E7%BD%91%E5%85%B3%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/%E5%B7%A5%E5%85%B7/How_to_write_LoRa_Gateway_Image_to_Micro_SD.pdf">here</a>.</p>
 <p><strong>2.</strong> Config the gateway with the build-in <a target="_blank" rel="noopener" href="https://www.chirpstack.io/">ChirpStack</a>, see <a target="_blank" rel="noopener" href="https://docs.rakwireless.com/Product-Categories/WisGate/RAK7243/Quickstart/#_2-using-an-independent-chirpstack">Quickstart</a>.</p>
+<p><strong>Note:</strong><br>The default mode for nodes joining LoRaWAN is OTAA. If nodes want to join with ABP mode, configuration of node should be modified as following:</p>
+<ul>
+<li>Device profile set with <code>device_profile_abp</code> and click <code>disable frame-counter validation</code>.</li>
+</ul>
+<img src="/images/LoRaWAN/abp1.png" width="450">
+
+<ul>
+<li>Device address, network session and application session key should consist with the firmware.</li>
+</ul>
+<img src="/images/LoRaWAN/abp2.png" width="450">
+
+<ul>
+<li>Login to gateway and open <a target="_blank" rel="noopener" href="https://www.chirpstack.io/network-server/install/config/">chirpstack-network-server</a> configuration:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@rak-gateway:~ $ sudo nano ../../etc/chirpstack-network-server/chirpstack-network-server.toml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Change <code>disable_mac_commands=false</code> to <code>disable_mac_commands=true</code>, save and reboot the gateway.</li>
+</ul>
 <h1 id="2-End-node"><a href="#2-End-node" class="headerlink" title="2. End node"></a>2. End node</h1><p>The <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Example/LoRaWAN/STM32CubeExpansion_LRWAN_V1.3.1/Projects/STM32L476RG-Nucleo/Applications/LoRa/End_Node/STM32CubeIDE/sx1276mb1mas">example project</a> is based on <a target="_blank" rel="noopener" href="https://www.st.com/en/embedded-software/i-cube-lrwan.html">I-CUBE-LRWAN</a>, where modifications in this project are within the define-marco <code>CHIRPBOX_LORAWAN</code>.</p>
 <img src="/images/LoRaWAN/LoRaWAN-IDE-Symbol.png" width="450">
 
