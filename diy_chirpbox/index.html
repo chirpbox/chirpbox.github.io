@@ -472,14 +472,11 @@ Here, COM_port is serial port connected with the control node.</li>
 </script>
 <script>
   function updateClock() {
-    var now = new Date(), // current date
-      time = now.toLocaleTimeString('en-US', {
-        hour12: false
-      });
-
+    var now = new Date(); // current date
     // a cleaner way than string concatenation
-    date = now.toISOString().substring(0, 10);
-
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
     // set the content of the element with the ID time to the formatted string
     document.getElementById('time').innerHTML = [date, time].join(' ');
 
@@ -492,16 +489,12 @@ Here, COM_port is serial port connected with the control node.</li>
 <script>
   function myFunction() {
     var x = document.lastModified;
-    var now = new Date(x), // current date
-      months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October',
-        'November', 'December'
-      ]; // you get the idea
-    time = now.toLocaleTimeString('en-US', {
-      hour12: false
-    });
+    var now = new Date(x); // last modified date
 
     // a cleaner way than string concatenation
-    date = now.toISOString().substring(0, 10);
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
 
     // set the content of the element with the ID time to the formatted string
     document.getElementById('demo').innerHTML = [date, time].join(' ');
