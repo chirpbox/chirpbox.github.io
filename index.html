@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="An Infrastructure-Less LoRa Testbed">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/images/logo.png">
+  
+  <title>
+    
+      ChirpBox
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-188073764-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-188073764-1');
+    </script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div class="wechat-share">
+  <img src="../images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>ChirpBox</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/get_started/" class="item-link">GET STARTED</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/diy_chirpbox/" class="item-link">DIY CHIRPBOX</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/LoRaWAN/" class="item-link">LORAWAN</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/topology/" class="item-link">TOPOLOGY</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/publications/" class="item-link">PUBLICATIONS</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/contacts/" class="item-link">CONTACTS</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/get_started/" class="menu-link">GET STARTED</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/diy_chirpbox/" class="menu-link">DIY CHIRPBOX</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/LoRaWAN/" class="menu-link">LORAWAN</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/topology/" class="menu-link">TOPOLOGY</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/publications/" class="menu-link">PUBLICATIONS</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/contacts/" class="menu-link">CONTACTS</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <!-- <main class="app-body">
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/diy_chirpbox/">diy_chirpbox</a>
+      </h2>
+      <p class="article-date">December 13, 2022</p>
+      
+      <div class="article-summary">
+        
+          You can follow this page to build your own ChirpBox from scratch.
+0. MaterialsFirst of all, please prepare the materials which are required to mak ...
+        
+      </div>
+      <a class="more" href="/diy_chirpbox/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/topology/">Topology</a>
+      </h2>
+      <p class="article-date">February 14, 2022</p>
+      
+      <div class="article-summary">
+        
+          This page shows the current topology of ChirpBox nodes deployed in the SARI campus.
+Monitoring setup:Nodes on ChirpBox send same amount of packets ...
+        
+      </div>
+      <a class="more" href="/topology/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/LoRaWAN/">LoRaWAN</a>
+      </h2>
+      <p class="article-date">February 14, 2022</p>
+      
+      <div class="article-summary">
+        
+          This tutorial will show the setup of a LoRaWAN network, including configurations on gateway/end nodes and data workflow with scripts.
+0. Prerequis ...
+        
+      </div>
+      <a class="more" href="/LoRaWAN/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/get_started/">get_started</a>
+      </h2>
+      <p class="article-date">February 14, 2022</p>
+      
+      <div class="article-summary">
+        
+          ChirpBox provides two sets of permissions: User and Administrator.This tutorial will show 1) how to prepare an experiment firmware image and 2) ho ...
+        
+      </div>
+      <a class="more" href="/get_started/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/Docker/"></a>
+      </h2>
+      <p class="article-date">February 14, 2022</p>
+      
+      <div class="article-summary">
+        
+          一、拉取Ubuntu镜像及必要软件
+查看docker版本12docker --versionDocker version 20.10.5, build 55c4c88
+拉取ubuntu镜像1docker pull ubuntu:latest
+可以在冒号后写上具体版本，不加默认为最新版
+查看已 ...
+        
+      </div>
+      <a class="more" href="/Docker/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/APIs/">APIs</a>
+      </h2>
+      <p class="article-date">February 14, 2022</p>
+      
+      <div class="article-summary">
+        
+          This document illustrates APIs provided by ChirpBox with code explanation and demo project.
+Parameters injectionFor benchmarking setting, users ca ...
+        
+      </div>
+      <a class="more" href="/APIs/">Read more</a>
+    </article>
+  
+    <article class="article-card">
+      <h2 class="article-head">
+        <a href="/Admin/">Admin</a>
+      </h2>
+      <p class="article-date">February 14, 2022</p>
+      
+      <div class="article-summary">
+        
+          This document show detailed steps for admins to manage experiments.
+Install Python 3.x packages
+serial: pip3 install pyserial
+numpy: pip3 install  ...
+        
+      </div>
+      <a class="more" href="/Admin/">Read more</a>
+    </article>
+  
+  
+</main>
+ -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <style>
+    .button {
+      display: inline-block;
+      padding: 12px 16px;
+      font-size: 16px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 40px;
+      /* box-shadow: 0 2px rgb(218, 218, 218); */
+      margin-left: 0.2em;
+      margin-right: 0.2em;
+    }
+
+    .button:hover {
+      background-color: #3e8e41
+    }
+
+    .button:active {
+      background-color: #3e8e41;
+      /* box-shadow: 0 5px #666; */
+      transform: translateY(4px);
+    }
+
+    .button_mb {
+      display: inline-block;
+      padding: 4px 8px;
+      font-size: 9px;
+      cursor: pointer;
+      text-align: center;
+      text-decoration: none;
+      outline: none;
+      color: #fff;
+      background-color: #4CAF50;
+      border: none;
+      border-radius: 40px;
+      /* box-shadow: 0 2px rgb(218, 218, 218); */
+      margin-left: 0.05em;
+      margin-right: 0.05em;
+      min-width: 25%;
+    }
+
+    .button_mb:hover {
+      background-color: #3e8e41
+    }
+
+    .button_mb:active {
+      background-color: #3e8e41;
+      /* box-shadow: 0 5px #666; */
+      transform: translateY(4px);
+    }
+  </style>
+</head>
+
+</html>
+<div class="flex-wrapper">
+  <div class="desktop">
+
+    <div id="article-banner">
+      <div class="row">
+        <a href="/"><img src="/images/chirpbox-logo.png" alt="ChirpBox" style="width:42em"></a>
+      </div>
+      <!-- <h2 style= "color:#a5ae53;margin-bottom:0.3em;">CHIRPBOX</h2> -->
+      <p style="margin-top:0.3em;margin-bottom:0.8em;font-size: 1.6em;font-weight: 360;color:#959190">An
+        Infrastructure-Less LoRa Testbed</p>
+      <a href="get_started" class="button">GET STARTED</a>
+      <a href="diy_chirpbox" class="button">DIY CHIRPBOX</a>
+      <a href="LoRaWAN" class="button">LORAWAN</a>
+      <a href="topology" class="button">TOPOLOGY</a>
+      <a href="publications" class="button">PUBLICATIONS</a>
+      <a href="contacts" class="button">CONTACTS</a>
+    </div>
+
+    <div
+      style="margin-top:0.3em;margin-left:8em;margin-right:8em;margin-bottom:1.5em;font-size: 1.4em;font-weight: 360;color:#000000;text-align:justify;word-break: break-word;">
+      <p>
+        Debugging wireless mesh networks mainly depends on observers, namely embedded systems e.g., Raspberry Pi boards,
+        which are connected with each other by infrastructure backbones, e.g., WiFi or Ethernet. These observers can
+        record loggings with timestamps and send them back to a server. However, for long distance communication
+        networks, e.g., LoRa networks, debugging with such infrastrure-based approaches is expensive, inflexible, and
+        even unfeasible. Thus, we build ChirpBox, an infrastructure-less LoRa testbed. ChirpBox is open source and under
+        the license of CC BY-SA 4.0. The source code is available <a
+          target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox">here</a>.
+      </p>
+
+      <p>
+        <br>
+        This work is initiated by <a target="_blank" rel="noopener" href="https://maxiaoyuan.com">Xiaoyuan Ma</a> (<a
+          target="_blank" rel="noopener" href="http://english.sari.cas.cn/">SARI, CAS</a>, now <a target="_blank" rel="noopener" href="https://www.skf.com/cn">SKF Group, China</a>),
+        <a target="_blank" rel="noopener" href="http://www.carloalbertoboano.com/">Carlo Alberto Boano</a> (<a
+          target="_blank" rel="noopener" href="https://www.tugraz.at/en/institutes/iti/research/research-areas/networked-embedded-systems/">TU Graz,
+          Austria</a>), and <a target="_blank" rel="noopener" href="http://nljrc.pk.njau.edu.cn/index.php/team-members/ye-liu/">Ye Liu</a> (<a
+          target="_blank" rel="noopener" href="http://nljrc.pk.njau.edu.cn/">NJAU, China</a>).
+      </p>
+
+      <br>
+      <b>Main Contributors:</b>
+      <br>
+      <p>
+        - <a target="_blank" rel="noopener" href="https://pei-tian.github.io/">Pei Tian</a> (SARI, CAS): LoRaDisC design and system implementation;
+        <br>
+        - Fengxu Yang (ShanghaiTech): Energy consumption evaluation;
+        <br>
+        - Dan Li (SARI, CAS): Bank switch verification;
+        <br>
+        - Xin Tian (SARI, CAS): Engineering and deployment;
+        <br>
+        - Yuan Li (NJAU): Web clients and servers for remote access;
+        <br>
+        - Lin Luo (NJAU): Web clients and servers for remote access;
+        <br>
+        - Yusheng Luo (NJAU): Web clients and servers for remote access.
+        <br>
+      </p>
+    </div>
+
+    <div
+      style="margin-top:0.3em;margin-left:8em;margin-right:8em;margin-bottom:1.5em;font-size: 1.4em;font-weight: 360;color:#000000;text-align:justify;word-break: break-word;">
+
+      <hr width="100%" color="#E5E5E5">
+      <b>News:</b>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">08/2022: ChirpBox has been awarded as the second place at the <a target="_blank" rel="noopener" href="https://www.gfnds.com/competition_list/125.html">2022 Lights of Future - Future Network Technology and Innovation Competition</a>!</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">11/2021: Our work "Dataset: Environmental Impact on the Long-Term Connectivity and Link Quality of an Outdoor LoRa Network" collected on ChirpBox is accepted by <a target="_blank" rel="noopener" href="https://data-workshop.github.io/DATA2021/">ACM DATA'21</a>!</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">05/2021: ChirpBox's live status is now online! Check out <a href="topology">topology</a>.</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">04/2021: LoRaWAN is now supported on ChirpBox,
+        see tutorial of <a href="LoRaWAN">how to build LoRaWAN</a>.</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">03/2021: ChirpBox nodes are now supported by
+        solar power supply.</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">02/2021: Our paper is identified as <span
+          style="color:red">best paper award candidate</span> at
+        <a target="_blank" rel="noopener" href="https://ewsn2021.ewi.tudelft.nl/">EWSN'21</a>!</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">12/2020: Our paper &#8220;ChirpBox: An
+        Infrastructure-Less LoRa Testbed&#8221; is accepted by <a target="_blank" rel="noopener" href="https://ewsn2021.ewi.tudelft.nl/">EWSN'21</a>.
+      </li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">02/2020: Our poster won <span
+          style="color:red">best poster award</span> at <a target="_blank" rel="noopener" href="https://ewsn2020.conf.citi-lab.fr/">EWSN'20</a>!</li>
+      <li style="font-size: 0.8em;margin-top:0.2em;margin-bottom:0.2em;">12/2019: Our poster &#8220;Poster: Chirpbox-A
+        Low-Cost LoRa Testbed Solution&#8221; is accepted by <a target="_blank" rel="noopener" href="https://ewsn2020.conf.citi-lab.fr/">EWSN'20</a>.
+      </li>
+
+      <!-- slide -->
+
+      <br>
+
+      <body>
+        <div class="slideshow-container">
+          <div class="mySlides fade">
+            <img src="/images/show/chirpbox_solar.jpg" style="width:100%">
+            <div class="text">ChirpBox node with solar panel supply</div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="/images/show/chirpbox_sari.jpg" style="width:100%">
+            <div class="text">ChirpBox at <a href="/images/show/chirpbox_topology.png">SARI campus</a></div>
+          </div>
+
+          <div class="mySlides fade">
+            <img src="/images/show/chirpbox_node.jpg" style="width:100%">
+            <div class="text">ChirpBox node hardware</div>
+          </div>
+
+          <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+          <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        </div>
+        <br>
+
+        <div style="text-align:center;margin-top: -25px;">
+          <span class="dot" onclick="currentSlide(1)"></span>
+          <span class="dot" onclick="currentSlide(2)"></span>
+          <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+        <script>
+          var slideIndex = 1;
+          showSlides(slideIndex);
+
+          function plusSlides(n) {
+            showSlides(slideIndex += n);
+          }
+
+          function currentSlide(n) {
+            showSlides(slideIndex = n);
+          }
+
+          function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            if (n > slides.length) {
+              slideIndex = 1
+            }
+            if (n < 1) {
+              slideIndex = slides.length
+            }
+            for (i = 0; i < slides.length; i++) {
+              slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+              dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+          }
+        </script>
+
+      </body>
+    </div>
+  </div>
+
+  <div class="mobile_device_480px">
+
+    <div id="article-banner">
+      <div class="row">
+        <a href="/"><img src="/images/chirpbox-logo.png" alt="ChirpBox" style="width:88%"></a>
+      </div>
+      <p style="margin-top:0.3em;margin-bottom:0.8em;font-size: 1.2em;font-weight: 360;color:#959190">An
+        Infrastructure-Less LoRa Testbed</p>
+      <p style="margin-top:0.4em;margin-bottom:0.4em;">
+        <a href="get_started" class="button_mb">GET STARTED</a>
+        <a href="diy_chirpbox" class="button_mb">DIY CHIRPBOX</a>
+        <a href="LoRaWAN" class="button_mb">LORAWAN</a>
+      </p>
+      <p style="margin-top:0.4em;margin-bottom:0.4em;">
+        <a href="topology" class="button_mb">TOPOLOGY</a>
+        <a href="publications" class="button_mb">PUBLICATIONS</a>
+        <a href="contacts" class="button_mb">CONTACTS</a>
+      </p>
+    </div>
+    <p
+      style="margin-top:0.3em;margin-left:2em;margin-right:2em;margin-bottom:1.5em;font-size: 1em;font-weight: 360;color:#000000;text-align:justify;">
+      Debugging wireless mesh networks mainly depends on observers, namely embedded systems e.g., Raspberry Pi boards,
+      which are connected with each other by infrastructure backbones, e.g., WiFi or Ethernet. These observers can
+      record loggings with timestamps and send them back to a server. However, for long distance communication networks,
+      e.g., LoRa networks, debugging with such infrastrure-based approaches is expensive, inflexible, and even
+      unfeasible. Thus, we build ChirpBox, an infrastructure-less LoRa testbed. ChirpBox is open source and under the
+      license of CC BY-SA 4.0. The source code is available <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox">here</a>.
+    </p>
+
+    <p
+      style="margin-top:0.3em;margin-left:2em;margin-right:2em;margin-bottom:1.5em;font-size: 1em;font-weight: 360;color:#000000">
+
+      <p style="margin-left:2em;margin-right:2em">
+        This work is initiated by <a target="_blank" rel="noopener" href="https://maxiaoyuan.com">Xiaoyuan Ma</a> (<a
+          target="_blank" rel="noopener" href="http://english.sari.cas.cn/">SARI, CAS</a>, now <a target="_blank" rel="noopener" href="https://www.skf.com/cn">SKF Group, China</a>),
+        <a target="_blank" rel="noopener" href="http://www.carloalbertoboano.com/">Carlo Alberto Boano</a> (<a
+          target="_blank" rel="noopener" href="https://www.tugraz.at/en/institutes/iti/research/research-areas/networked-embedded-systems/">TU Graz,
+          Austria</a>), and <a target="_blank" rel="noopener" href="http://nljrc.pk.njau.edu.cn/index.php/team-members/ye-liu/">Ye Liu</a> (<a
+          target="_blank" rel="noopener" href="http://nljrc.pk.njau.edu.cn/">NJAU, China</a>).
+      </p>
+    </p>
+    <br>
+
+    <p
+      style="margin-top:0.3em;margin-left:2em;margin-right:2em;margin-bottom:1.5em;font-size: 1em;font-weight: 360;color:#000000">
+      <b>Main Contributors:</b>
+      <br>
+      - <a target="_blank" rel="noopener" href="https://pei-tian.github.io/">Pei Tian</a> (SARI, CAS): LoRaDisC design and system implementation;
+      <br>
+      - Fengxu Yang (ShanghaiTech): Energy consumption evaluation;
+      <br>
+      - Dan Li (SARI, CAS): Bank switch verification;
+      <br>
+      - Xin Tian (SARI, CAS): Engineering and deployment;
+      <br>
+      - Yuan Li (NJAU): Web clients and servers for remote access;
+      <br>
+      - Lin Luo (NJAU): Web clients and servers for remote access;
+      <br>
+      - Yusheng Luo (NJAU): Web clients and servers for remote access.
+    </p>
+
+
+    <hr width="85%" color="#E5E5E5">
+    <b style="margin-left:2em;margin-right:2em">News:</b>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">08/2022: ChirpBox has been awarded as the second place at the <a target="_blank" rel="noopener" href="https://www.gfnds.com/competition_list/125.html">2022 Lights of Future - Future Network Technology and Innovation Competition</a>!</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">11/2021: Our work "Dataset: Environmental Impact on the Long-Term Connectivity and Link Quality of an Outdoor LoRa Network" collected on ChirpBox is accepted by <a target="_blank" rel="noopener" href="https://data-workshop.github.io/DATA2021/">ACM DATA'21</a>!</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">05/2021: ChirpBox's live status is now online! Check out <a href="topology">topology</a>.</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">04/2021: LoRaWAN is now
+      supported on ChirpBox,
+      see tutorial of <a href="LoRaWAN">how to build LoRaWAN</a>.</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">03/2021: ChirpBox nodes are now
+      supported by solar power supply.</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">02/2021: Our paper is identified
+      as <span style="color:red">best paper award candidate</span> at
+      <a target="_blank" rel="noopener" href="https://ewsn2021.ewi.tudelft.nl/">EWSN'21</a>!</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">12/2020: Our paper
+      &#8220;ChirpBox: An
+      Infrastructure-Less LoRa Testbed&#8221; is accepted by <a target="_blank" rel="noopener" href="https://ewsn2021.ewi.tudelft.nl/">EWSN'21</a>.
+    </li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">02/2020: Our poster won <span
+        style="color:red">best poster award</span> at <a target="_blank" rel="noopener" href="https://ewsn2020.conf.citi-lab.fr/">EWSN'20</a>!</li>
+    <li style="margin-top:0.2em;margin-bottom:0.2em;margin-left:2em;margin-right:2em">12/2019: Our poster
+      &#8220;Poster: Chirpbox-A
+      Low-Cost LoRa Testbed Solution&#8221; is accepted by <a target="_blank" rel="noopener" href="https://ewsn2020.conf.citi-lab.fr/">EWSN'20</a>.
+    </li>
+
+    <div class="content">
+      <div class="gallery">
+        <a target="_blank" href="/images/show/chirpbox_solar.jpg">
+          <img src="/images/show/chirpbox_solar.jpg" alt="Cinque Terre" width="800">
+        </a>
+        <div class="desc" style="line-height: 20px;">ChirpBox node with solar panel supply</div>
+      </div>
+      <div class="gallery">
+        <a target="_blank" href="/images/show/chirpbox_sari.jpg">
+          <img src="/images/show/chirpbox_sari.jpg" alt="Cinque Terre" width="800">
+        </a>
+        <div class="desc" style="line-height: 20px;">ChirpBox at <a href="/images/show/chirpbox_topology.png">SARI
+            campus</a></div>
+      </div>
+      <div class="gallery">
+        <a target="_blank" href="/images/show/chirpbox_node.jpg">
+          <img src="/images/show/chirpbox_node.jpg" alt="Cinque Terre" width="800">
+        </a>
+        <div class="desc" style="line-height: 20px;">ChirpBox node hardware</div>
+      </div>
+    </div>
+    <hr width="100%" color="#FFFFFF">
+
+  </div>
+
+  <script>
+    (function () {
+      var url = 'http://example.com/index.html';
+      // $('#article-banner').geopattern(url);
+      $('#article-banner').css({
+        // 'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+      })
+      // $('.header').removeClass('fixed-header')
+      $("header, footer").hide();
+    })()
+  </script>
+
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <style>
+      .content {
+        max-width: 100%;
+        margin-left: 20px;
+      }
+
+      div.gallery {
+        margin: 5px;
+        float: left;
+        /* TODO: 30% is because 3 figures in one line */
+        width: 30%;
+        background-color: #E5E5E5;
+      }
+
+      div.gallery:hover {}
+
+      div.gallery img {
+        width: 100%;
+        height: auto;
+      }
+
+      div.desc {
+        text-align: center;
+        background-color: #E5E5E5;
+        font-size: 0.8em;
+        height: 40px;
+      }
+    </style>
+  </head>
+
+  </html>
+
+
+  <!DOCTYPE html>
+  <html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      * {
+        box-sizing: border-box
+      }
+
+      .mySlides {
+        display: none
+      }
+
+      img {
+        vertical-align: middle;
+      }
+
+      /* Slideshow container */
+      .slideshow-container {
+        max-width: 1000px;
+        position: relative;
+        margin: auto;
+      }
+
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 16px;
+        margin-top: -22px;
+        color: white;
+        font-weight: bold;
+        font-size: 18px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+        user-select: none;
+      }
+
+      /* Position the "next button" to the right */
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      /* On hover, add a black background color with a little bit see-through */
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+
+      /* Caption text */
+      .text {
+        color: #f2f2f2;
+        font-size: 30px;
+        padding: 8px 12px;
+        position: absolute;
+        bottom: 8px;
+        width: 100%;
+        text-align: center;
+      }
+
+      /* Number text (1/3 etc) */
+      .numbertext {
+        color: #f2f2f2;
+        font-size: 12px;
+        padding: 8px 12px;
+        position: absolute;
+        top: 0;
+      }
+
+      /* The dots/bullets/indicators */
+      .dot {
+        cursor: pointer;
+        height: 15px;
+        width: 15px;
+        margin: 0 2px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active,
+      .dot:hover {
+        background-color: #717171;
+      }
+
+      /* Fading animation */
+      .fade {
+        -webkit-animation-name: fade;
+        -webkit-animation-duration: 0s;
+        animation-name: fade;
+        animation-duration: 0s;
+      }
+
+      @-webkit-keyframes fade {
+        from {
+          opacity: .4
+        }
+
+        to {
+          opacity: 1
+        }
+      }
+
+      @keyframes fade {
+        from {
+          opacity: .4
+        }
+
+        to {
+          opacity: 1
+        }
+      }
+
+      /* On smaller screens, decrease text size */
+      @media only screen and (max-width: 300px) {
+
+        .prev,
+        .next,
+        .text {
+          font-size: 11px
+        }
+      }
+    </style>
+  </head>
+
+  </html>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    
+<footer class="app-footer">
+  <p class="copyright">
+    <!-- &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> -->
+    &copy; 2020 - 2022 ChirpBox | Built with <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!-- <br>
+      style="margin-top:2.4em;margin-bottom:0em;"
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a> -->
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

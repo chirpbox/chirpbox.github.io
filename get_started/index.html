@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="An Infrastructure-Less LoRa Testbed">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/images/logo.png">
+  
+  <title>
+    
+      get_started | ChirpBox
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-188073764-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-188073764-1');
+    </script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div class="wechat-share">
+  <img src="../images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>ChirpBox</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/get_started/" class="item-link">GET STARTED</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/diy_chirpbox/" class="item-link">DIY CHIRPBOX</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/LoRaWAN/" class="item-link">LORAWAN</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/topology/" class="item-link">TOPOLOGY</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/publications/" class="item-link">PUBLICATIONS</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/contacts/" class="item-link">CONTACTS</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/get_started/" class="menu-link">GET STARTED</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/diy_chirpbox/" class="menu-link">DIY CHIRPBOX</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/LoRaWAN/" class="menu-link">LORAWAN</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/topology/" class="menu-link">TOPOLOGY</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/publications/" class="menu-link">PUBLICATIONS</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/contacts/" class="menu-link">CONTACTS</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <!-- <h2>get_started</h2> -->
+    <section class="markdown-content"><p>ChirpBox provides two sets of permissions: <strong>User</strong> and <strong>Administrator</strong>.<br>This tutorial will show 1) how to prepare an experiment firmware image and 2) how to manage experiments (firmware dissemination and results collection).<br>You could order ChirpBox nodes by writing mail to <a href="mailto:ma.xiaoyuan.mail@gmail.com">us</a> or <a href="../diy_chirpbox/">build</a> a ChirpBox testbed by yourself.</p>
+<h1 id="0-Prerequisites"><a href="#0-Prerequisites" class="headerlink" title="0. Prerequisites"></a>0. Prerequisites</h1><p>The project is developed with integrated development environment (IDE) <a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>.<br>The source code is available <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox.git">here</a>.</p>
+<h1 id="1-User-firmware-preparation"><a href="#1-User-firmware-preparation" class="headerlink" title="1. User firmware preparation"></a>1. User firmware preparation</h1><p>Please add the <strong>Toggle</strong> tool in your own project (e.g., a wireless network protocol to be tested), recompile it, and generate the firmware for ChirpBox. Assuming your own project is also developed with <a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>, the specific steps would be:<br><strong>1.</strong> Open <code>Project-&gt;Properties</code>, go to <code>Paths and Symbols</code> in <code>C/C++ General</code>, add <code>ChirpBox/Miscellaneous/Toggle/Inc/</code> to the include directories.</p>
+<img src="/images/get_started_Fig.1.png" width="500">
+<img src="/images/get_started_Fig.2.png" width="500">
+
+<p><strong>2.</strong> Add <code>ChirpBox/Miscellaneous/Toggle/Src/</code> to the source location.<br><img src="/images/get_started_Fig.3.png" width="500"></p>
+<p><strong>3.</strong> Check if the following MCU related files are in your project:</p>
+<ul>
+<li>Include: <code>stdint.h</code>, <code>stm32l4xx.h</code>, <code>stm32l476xx.h</code> and <code>system_stm32l4xx.h</code></li>
+<li>Source: <code>system_stm32l4xx.c</code></li>
+<li>Startup file: <code>startup_stm32l476xx.s</code></li>
+</ul>
+<p>If some files are missing, these files can be found <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Toggle/STM32L476">here</a>.</p>
+<p><strong>4.</strong> Make sure that <code>-O binary</code> is checked as shown below. Then, compile your own project and generate the <code>.bin</code> file for ChirpBox.<br><img src="/images/get_started_Fig.4.png" width="500"></p>
+<h2 id="1-1-Example-project"><a href="#1-1-Example-project" class="headerlink" title="1.1 Example project"></a>1.1 Example project</h2><p>ChirpBox provides an example project, which includes all necessary files in <strong>Toggle</strong> and logs <code>&quot;Hello world&quot;</code> in ASCII format at <code>0x080FF800</code> (last page address of the MCU’s Flash).<br><strong>1.</strong> Go to <code>ChirpBox/Miscellaneous/Example/L476RG-demo/</code>, open the <code>.project</code> file with <a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a>.<br><strong>2.</strong> The <code>L476RG-demo.bin</code> would be under <code>Debug/</code> after you compile the project.</p>
+<h2 id="1-2-APIs-for-experiments"><a href="#1-2-APIs-for-experiments" class="headerlink" title="1.2 APIs for experiments"></a>1.2 APIs for experiments</h2><p>You are able to achieve multiple functions (e.g., store loggings to the internal flash or energy consumption estimation) in your own project by using APIs provided by ChirpBox. Please see our documentation on <a href="../APIs/">APIs</a> for details.</p>
+<h1 id="2-Start-an-experiment-with-the-script"><a href="#2-Start-an-experiment-with-the-script" class="headerlink" title="2. Start an experiment with the script"></a>2. Start an experiment with the script</h1><p>The script provided by ChirpBox requires a Python 3.x. environment.<br>Make sure that the <strong>control node</strong> is connected to a computer via serial port.</p>
+<h2 id="2-1-Configure-the-experiment"><a href="#2-1-Configure-the-experiment" class="headerlink" title="2.1 Configure the experiment"></a>2.1 Configure the experiment</h2><p>You can configure the experiment related parameters including experiment duration, name, the flash start address for loggings etc. <code>experiment_duration</code> is in second. For example, the <code>example_config_method.json</code> in <code>ChirpBox/chirpbox manager/</code> configures experiment named <span style="color: #FF5822">test</span>:<br>    <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;experiment_name&quot;</span><span class="punctuation">:</span> <span class="string">&quot;test&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;experiment_description&quot;</span><span class="punctuation">:</span> <span class="string">&quot;This is a test experiment&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;experiment_duration&quot;</span><span class="punctuation">:</span> <span class="number">1800</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;start_address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;080FF800&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;end_address&quot;</span><span class="punctuation">:</span> <span class="string">&quot;0810000&quot;</span><span class="punctuation">,</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>Please adapt configurations in <code>example_config_method.json</code> according to your own experiments. This file <code>example_config_method.json</code> can be created in another directory or renamed by yourself, but you need to make modification in the <code>ChirpBox/chirpbox manager/cbmng.py</code>.</p>
+<h2 id="2-2-Post-and-start-the-experiment"><a href="#2-2-Post-and-start-the-experiment" class="headerlink" title="2.2 Post and start the experiment"></a>2.2 Post and start the experiment</h2><p>To post the experiment on ChirpBox testbed, we need<br><strong>1)</strong> measure the link quality and <strong>2)</strong> obtain the topology to make sure all the nodes are connected.<br><strong>3)</strong> Post (disseminate) the firmware under test (the <code>.bin</code> file generated previously) to the target nodes.<br>Then, <strong>4)</strong> start the experiment.</p>
+<p>Specifically,<br><strong>1)</strong> Link quality measurement<br>For instance, you plan to measure the link quality when LoRa radio’s spreading factor (SF) is set to <code>7</code> at <code>470</code> MHz with the Tx power of <code>0</code> dBm. The <strong>control node</strong> is connected to the serial port <code>COM1</code> of the computer. The command of link quality measurement is disseminated with SF <code>8</code>, <code>14</code> dBm in <code>80</code>-packet-slot rounds. The bitmap is <code>0x1FFFFF</code> (21 bits of <code>0b1</code>) if there are 21 nodes (including the control node).<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cbmng.py -connect <span class="number">7</span> <span class="number">470000</span> <span class="number">0</span> <span class="number">8</span> COM1 <span class="number">80</span> <span class="number">14</span> 1FFFFF</span><br></pre></td></tr></table></figure></p>
+<p><strong>2)</strong> Topology collection<br>For instance, the collection packet size is <code>128</code> bytes each packet. The serial port of the <strong>control node</strong> is <code>COM1</code>. The command is disseminated with SF <code>8</code>, <code>14</code> dBm in <code>80</code>-packet-slot rounds.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cbmng.py -coltopo <span class="number">8</span> <span class="number">128</span> COM1 <span class="number">80</span> <span class="number">14</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>3)</strong> Firmware dissemination<br>For instance, put the generated <code>.bin</code> file to <code>ChirpBox/chirpbox manager/</code>. NOTICE: guarantee only one <code>.bin</code> file is in this directory. The daemon firmware version is <code>0xabcd</code> which can be obtained by <code>colver</code> command (seeing <a href="../diy_chirpbox/#3-2-Manage-nodes-remotely">3.2 in DIY CHIRPBOX</a>). The serial port of the <strong>control node</strong> is <code>COM1</code>. The firmware is disseminated with SF <code>8</code>, <code>0</code> dBm, <code>200</code>-byte packets and <code>16</code> packets/round with <code>80</code>-packet-slot rounds, and the configuration in the all-to-one round followed by each one-to-all round is SF <code>7</code>, <code>14</code> dBm, and <code>60</code>-packet-slot rounds. Dissemination is transmitted among 21 nodes (including the control node) (<code>0x1FFFFF</code>) but only conducted on 20 target nodes (<code>0x1FFFFE</code>).</p>
+<p>The command dissemination parameters cannot be configured in here, which would adopt the previous configuration.</p>
+<p>Here, the command would be disseminated with SF <code>8</code>, <code>14</code> dBm in <code>80</code>-packet-slot rounds since the parameters are configured in the previous step, i.e., the topology collection.<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cbmng.py -dissem <span class="number">0</span> abcd <span class="number">200</span> <span class="number">16</span> <span class="number">8</span> COM1 1FFFFE <span class="number">80</span> <span class="number">7</span> <span class="number">60</span> <span class="number">14</span> 1FFFFF</span><br></pre></td></tr></table></figure></p>
+<p><strong>4)</strong> Starting the experiment<br>Set flash protection flag to <code>1</code> among 21 nodes (<code>0x1FFFFF</code>) including the <strong>control node</strong>. The daemon firmware version is <code>0xabcd</code>. The serial port of the <strong>control node</strong> is <code>COM1</code>. The command is disseminated with SF <code>8</code>, <code>14</code> dBm in <code>80</code>-packet-slot rounds. This command would load the configuration in <code>example_config_method.json</code> automatically.<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cbmng.py -start <span class="number">1</span> abcd <span class="number">8</span> COM1 1FFFFF <span class="number">80</span> <span class="number">14</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="2-3-Get-the-experiment-results"><a href="#2-3-Get-the-experiment-results" class="headerlink" title="2.3 Get the experiment results"></a>2.3 Get the experiment results</h2><p>Once the experiment has been finished, we can collect the results.<br><strong>1)</strong> Results collection<br>For instance, you plan to collect 2048-byte loggings in the flash from <code>0x080FF800</code> to <code>0x0810000</code> in a block of <code>128</code> bytes, i.e., the collection packet size is <code>128</code> bytes each packet. The serial port of the <strong>control node</strong> is <code>COM1</code>. The command is disseminated with SF <code>8</code>, <code>14</code> dBm in <code>80</code>-packet-slot rounds. Collect data from the 20 target nodes (<code>0x1FFFFE</code>) (except the control node).<br>  <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cbmng.py -coldata <span class="number">128</span> <span class="number">8</span> COM1 <span class="number">80</span> <span class="number">14</span> 1FFFFE</span><br></pre></td></tr></table></figure></p>
+<!--
+
+
+
+The procedures of an experiment with scripts are as follows (see parameters definitions with `python cbmng.py -h`):
+
+# 1. Usage
+
+## 1.1 As a user
+
+### Firmware prepare
+
+
+
+**3.** Upload the firmware and experiment configuration to **Admin** and wait the file of experiment results of `L476RG-demo.txt`.
+
+
+
+## 1.2 Admin
+### Management commands
+
+Admin uses Python scripts to manage firmware images, experiments, and results. Thus, admin needs to offer a **controller node** connected to the computer server for serial port in scripts.
+
+**1.** Scripts setup
+- Obtain serial port of the controller node through serial terminal.
+- Goto `ChirpBox/chirpbox manager/`, open  command-line or terminal
+- All commands are listed in `cbmng.py`, run:
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python cbmng.py -h</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Following commands are shown in terminal:<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">*********************************************</span><br><span class="line">**************Chirpbox Help******************</span><br><span class="line">*********************************************</span><br><span class="line">Chirpbox<span class="punctuation">:</span> Help</span><br><span class="line">One can do as follows to prepare an experiment<span class="punctuation">:</span></span><br><span class="line"><span class="number">1</span>) Configure an experiment configuration file<span class="punctuation">,</span> including payload length<span class="punctuation">,</span> traffic pattern<span class="punctuation">,</span> interference<span class="punctuation">,</span> and experiment duration</span><br><span class="line"><span class="number">2</span>) Configure a firmware file (.bin) to be tested</span><br><span class="line"><span class="number">3</span>) Configure a methodology file to assign the metrics to be computed.</span><br><span class="line">As soon as all the steps mentioned above have been configured properly<span class="punctuation">,</span> then one can start experiments.</span><br><span class="line">The commands are<span class="punctuation">:</span></span><br><span class="line"><span class="number">1</span>) <span class="string">&quot;python cbmng.py -ec [filename]&quot;</span> to configure experiments</span><br><span class="line"><span class="number">2</span>) <span class="string">&quot;python cbmng.py -ef [filename]&quot;</span> to configure firmware</span><br><span class="line"><span class="number">3</span>) <span class="string">&quot;python cbmng.py -em [filename]&quot;</span> to configure methodology</span><br><span class="line"><span class="number">4</span>) <span class="string">&quot;python cbmng.py -start [flash_protection] [version_hash] [used_SF] [com_port] [bitmap] [slot_num][used_tp] &quot;</span> to start an experiment.</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+
+</li>
+</ul>
+<p><strong>2.</strong> Scripts usage</p>
+<h1 id="2-Advance"><a href="#2-Advance" class="headerlink" title="2. Advance"></a>2. Advance</h1><p><strong>Get started with the Daemon project</strong></p>
+<ul>
+<li>Goto <code>ChirpBox/Daemon/</code>, open the <code>.project</code> with STM32CubeIDE.</li>
+</ul>
+<h2 id="2-1-ChirpBox-manager"><a href="#2-1-ChirpBox-manager" class="headerlink" title="2.1 ChirpBox manager"></a>2.1 ChirpBox manager</h2><p>ChirpBox manager communicates between server and controller node through the serial interface.</p>
+<p><strong>1.</strong> Manager on node<br>  Goto <code>ChirpBox/Daemon/Src/</code>, manager related <strong><em>functions</em></strong> are defined as following:</p>
+<ul>
+<li><code>chirp_controller_read_command</code>: controller node read commands’ parameters from serial port</li>
+<li><code>chirp_start</code>: nodes’ setup according to different commands</li>
+<li><code>chirp_packet_config</code>, <code>chirp_slot_config</code>, <code>chirp_radio_config</code>, <code>chirp_payload_distribution</code>: transmission configurations such as packet length, transmission round duration, etc according to commands’ parameters</li>
+<li><code>chirp_write</code>, <code>chirp_recv</code>, <code>chirp_round</code>: nodes write/receive packet data, and transmit in rounds according to commands’ parameters</li>
+</ul>
+<p><strong>2.</strong> Manager on script<br>  Goto <code>ChirpBox/chirpbox manager/</code>, manager related <strong><em>scripts</em></strong> are defined as following:</p>
+<ul>
+<li><code>cbmng.py</code>: menu for assigning commands and corresponded parameters</li>
+<li><code>cbmng_exp_start.py</code>: commands’ related functions</li>
+<li><code>cbmng_common.py</code>: decision making on commands’ parameters</li>
+<li><code>cbmng_exp_config.py</code>, <code>cbmng_exp_firm.py</code>, <code>cbmng_exp_method.py</code>: experiments, firmware, methodology configuration functions</li>
+</ul>
+<h2 id="2-2-LoRaDisC"><a href="#2-2-LoRaDisC" class="headerlink" title="2.2 LoRaDisC"></a>2.2 LoRaDisC</h2><p><strong>1.</strong> All-to-all transmission<br>  Goto <code>ChirpBox/Daemon/Src/</code>, all-to-all transmission related <strong><em>source codes</em></strong> are in following folders:</p>
+<ul>
+<li><code>Src/mixer/</code>: LoRaDisC achieves all-to-all communication based on <a target="_blank" rel="noopener" href="https://mixer.nes-lab.org/">Mixer</a> from the <a target="_blank" rel="noopener" href="https://nes-lab.org/">Networked Embedded Systems (NES) Lab</a></li>
+<li><code>Src/gpi/arm/L476RG_SX1276/</code>: ported hardware related codes</li>
+</ul>
+<p><strong>2.</strong> Transmission policy with Listen Before Talk (LBT)</p>
+<ul>
+<li><code>Src/loradisc/lbt.c</code>: source codes of LBT policy –&gt;</li>
+</ul>
+</section>
+    <!-- Tags START -->
+    
+  </article>
+  <div class="flex-wrapper">
+  </div>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main"style="color:#C93819">
+    <!-- <strong class="toc-title">get_started</strong> -->
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-Prerequisites"><span class="toc-nav-text">0. Prerequisites</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-User-firmware-preparation"><span class="toc-nav-text">1. User firmware preparation</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-1-Example-project"><span class="toc-nav-text">1.1 Example project</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-2-APIs-for-experiments"><span class="toc-nav-text">1.2 APIs for experiments</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-Start-an-experiment-with-the-script"><span class="toc-nav-text">2. Start an experiment with the script</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-1-Configure-the-experiment"><span class="toc-nav-text">2.1 Configure the experiment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-2-Post-and-start-the-experiment"><span class="toc-nav-text">2.2 Post and start the experiment</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-3-Get-the-experiment-results"><span class="toc-nav-text">2.3 Get the experiment results</span></a></li></ol></li></ol>
+    
+  </div>
+  </aside>
+  
+  <!-- Catalog END -->
+</main>
+</div>
+<script>
+  (function () {
+    var url = 'http://example.com/get_started/';
+    var banner = ''
+    $('#article-banner').css({
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+<script>
+  function updateClock() {
+    var now = new Date(); // current date
+    // a cleaner way than string concatenation
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x); // last modified date
+
+    // a cleaner way than string concatenation
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    
+<footer class="app-footer">
+  <p class="copyright">
+    <!-- &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> -->
+    &copy; 2020 - 2022 ChirpBox | Built with <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!-- <br>
+      style="margin-top:2.4em;margin-bottom:0em;"
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a> -->
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

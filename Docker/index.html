@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="An Infrastructure-Less LoRa Testbed">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/images/logo.png">
+  
+  <title>
+    
+      ChirpBox
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-188073764-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-188073764-1');
+    </script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div class="wechat-share">
+  <img src="../images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>ChirpBox</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/get_started/" class="item-link">GET STARTED</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/diy_chirpbox/" class="item-link">DIY CHIRPBOX</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/LoRaWAN/" class="item-link">LORAWAN</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/topology/" class="item-link">TOPOLOGY</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/publications/" class="item-link">PUBLICATIONS</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/contacts/" class="item-link">CONTACTS</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/get_started/" class="menu-link">GET STARTED</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/diy_chirpbox/" class="menu-link">DIY CHIRPBOX</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/LoRaWAN/" class="menu-link">LORAWAN</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/topology/" class="menu-link">TOPOLOGY</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/publications/" class="menu-link">PUBLICATIONS</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/contacts/" class="menu-link">CONTACTS</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <!-- <h2></h2> -->
+    <section class="markdown-content"><h4 id="一、拉取Ubuntu镜像及必要软件"><a href="#一、拉取Ubuntu镜像及必要软件" class="headerlink" title="一、拉取Ubuntu镜像及必要软件"></a>一、拉取Ubuntu镜像及必要软件</h4><ol>
+<li>查看docker版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker --version</span><br><span class="line">Docker version 20.10.5, build 55c4c88</span><br></pre></td></tr></table></figure></li>
+<li>拉取ubuntu镜像<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull ubuntu:latest</span><br></pre></td></tr></table></figure>
+可以在冒号后写上具体版本，不加默认为最新版</li>
+<li>查看已有镜像<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></li>
+<li>查看所有容器<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">docker ps</span><br><span class="line">docker ps -la</span><br><span class="line">CONTAINER ID   IMAGE          COMMAND       CREATED        STATUS                      PORTS     NAMES</span><br><span class="line">2bae197d12d5   26b77e58432b   &quot;/bin/bash&quot;   43 hours ago   Exited (127) 43 hours ago             stupefied_ishizaka</span><br></pre></td></tr></table></figure></li>
+<li>运行并进入容器<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -it 26b77e58432b /bin/bash</span><br></pre></td></tr></table></figure>
+如果想让容器后台运行，可以使用<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d 26b77e58432b [/bin/bash]</span><br><span class="line">docker ps</span><br><span class="line">CONTAINER ID   IMAGE          COMMAND       CREATED         STATUS         PORTS     NAMES</span><br><span class="line">1b6afcecd820   26b77e58432b   &quot;/bin/bash&quot;   2 minutes ago   Up 2 minutes             beautiful_robinson</span><br><span class="line"># 退出容器</span><br><span class="line">exit</span><br></pre></td></tr></table></figure>
+如果想退出容器但不停止运行可以使用Ctrl+P+Q，再次进入容器可以用<code>docker exec -it 1b6afcecd820 /bin/bash</code></li>
+<li>查看版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat /etc/issue</span><br><span class="line">Ubuntu 20.04.2 LTS \n \l</span><br></pre></td></tr></table></figure></li>
+<li>更换阿里源<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;deb http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-security main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-updates main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-proposed main restricted universe multiverse</span><br><span class="line"></span><br><span class="line">deb http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse</span><br><span class="line">deb-src http://mirrors.aliyun.com/ubuntu/ focal-backports main restricted universe multiverse&quot;&gt;/etc/apt/sources.list</span><br></pre></td></tr></table></figure></li>
+<li>更新软件列表和软件<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt-get update</span><br><span class="line">apt-get upgrade</span><br></pre></td></tr></table></figure>
+update是更新软件列表，upgrade是更新软件</li>
+<li>安装必备软件 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install net-tools inetutils-ping openssh-server samba samba-common git vim curl</span><br></pre></td></tr></table></figure>
+<h4 id="二、安装yocto开发环境"><a href="#二、安装yocto开发环境" class="headerlink" title="二、安装yocto开发环境"></a>二、安装yocto开发环境</h4></li>
+<li>配置环境<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">passwd root</span><br><span class="line">useradd imhqq</span><br><span class="line"></span><br><span class="line">apt-get install gawk wget git-core diffstat unzip texinfo gcc-multilib \</span><br><span class="line">build-essential chrpath socat libsdl1.2-dev libsdl1.2-dev xterm sed cvs subversion coreutils texi2html \</span><br><span class="line">docbook-utils python-pysqlite2 help2man make gcc g++ desktop-file-utils \</span><br><span class="line">libgl1-mesa-dev libglu1-mesa-dev mercurial autoconf automake groff curl lzop asciidoc u-boot-tools curl bc lzop</span><br><span class="line"></span><br><span class="line">smbpasswd -a root</span><br><span class="line"></span><br><span class="line">echo &quot;[share]</span><br><span class="line">comment = share folder</span><br><span class="line">browseable = yes</span><br><span class="line">path = /home</span><br><span class="line">create mask = 0700</span><br><span class="line">directory mask = 0700</span><br><span class="line">valid users = root</span><br><span class="line">force user = root</span><br><span class="line">force group = root</span><br><span class="line">public = yes</span><br><span class="line">available = yes</span><br><span class="line">writable = yes&quot; &gt;/etc/samba/smb.conf</span><br><span class="line"></span><br><span class="line">service smbd restart</span><br></pre></td></tr></table></figure></li>
+<li>下载repo<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">su root</span><br><span class="line">mkdir ~/bin/</span><br><span class="line">cd ~/bin</span><br><span class="line">git clone https://gerrit-googlesource.lug.ustc.edu.cn/git-repo</span><br><span class="line">cp git-repo/repo repo</span><br><span class="line">chmod +x repo</span><br><span class="line">chmod a+x ~/bin/repo</span><br><span class="line">export PATH=~/bin:$PATH</span><br><span class="line"></span><br><span class="line">cd /usr/bin/</span><br><span class="line"></span><br><span class="line">ls | grep python</span><br><span class="line"></span><br><span class="line">python --version</span><br><span class="line"></span><br><span class="line">update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1</span><br></pre></td></tr></table></figure></li>
+<li>下载fsl-release-bsp版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">repo init -u https://source.codeaurora.org/external/imx/imx-manifest -b imx-linux-sumo -m imx-4.14.98-2.0.0_ga.xml</span><br><span class="line"></span><br><span class="line">repo sync -f -j8</span><br></pre></td></tr></table></figure>
+如果遇到被墙的情况可通过更改镜像源解决<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">mkdir bin</span><br><span class="line">cd bin</span><br><span class="line">curl https://mirrors.tuna.tsinghua.edu.cn/git/git-repo &gt; ~/bin/repo</span><br><span class="line">chmod a+x ~/bin/repo</span><br><span class="line">export PATH=$&#123;PATH&#125;:~/bin</span><br></pre></td></tr></table></figure>
+打开repo文件并修改google地址<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi ~/bin/repo</span><br><span class="line"></span><br><span class="line">REPO_URL = &#x27;https://gerrit.googlesource.com/git-repo&#x27;</span><br><span class="line">REPO_URL = &#x27;https://mirrors.tuna.tsinghua.edu.cn/git/git-repo/&#x27;</span><br></pre></td></tr></table></figure>
+<h4 id="三、编写脚本后将容器提交为镜像"><a href="#三、编写脚本后将容器提交为镜像" class="headerlink" title="三、编写脚本后将容器提交为镜像"></a>三、编写脚本后将容器提交为镜像</h4><style>blockquote,p{margin-left:2em}</style>
+commit容器并查看所有镜像<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker commit 1b6afcecd820 myubuntu:v1</span><br><span class="line">docker images</span><br><span class="line">REPOSITORY   TAG       IMAGE ID       CREATED         SIZE</span><br><span class="line">myubuntu     v1        711dff990673   8 seconds ago   72.9MB</span><br><span class="line">ubuntu       latest    26b77e58432b   3 weeks ago     72.9MB</span><br></pre></td></tr></table></figure>
+
+
+</li>
+</ol>
+</section>
+    <!-- Tags START -->
+    
+  </article>
+  <div class="flex-wrapper">
+  </div>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main"style="color:#C93819">
+    <!-- <strong class="toc-title"></strong> -->
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%80%E3%80%81%E6%8B%89%E5%8F%96Ubuntu%E9%95%9C%E5%83%8F%E5%8F%8A%E5%BF%85%E8%A6%81%E8%BD%AF%E4%BB%B6"><span class="toc-nav-text">一、拉取Ubuntu镜像及必要软件</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%BA%8C%E3%80%81%E5%AE%89%E8%A3%85yocto%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="toc-nav-text">二、安装yocto开发环境</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#%E4%B8%89%E3%80%81%E7%BC%96%E5%86%99%E8%84%9A%E6%9C%AC%E5%90%8E%E5%B0%86%E5%AE%B9%E5%99%A8%E6%8F%90%E4%BA%A4%E4%B8%BA%E9%95%9C%E5%83%8F"><span class="toc-nav-text">三、编写脚本后将容器提交为镜像</span></a></li></ol>
+    
+  </div>
+  </aside>
+  
+  <!-- Catalog END -->
+</main>
+</div>
+<script>
+  (function () {
+    var url = 'http://example.com/Docker/';
+    var banner = ''
+    $('#article-banner').css({
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+<script>
+  function updateClock() {
+    var now = new Date(); // current date
+    // a cleaner way than string concatenation
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x); // last modified date
+
+    // a cleaner way than string concatenation
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    
+<footer class="app-footer">
+  <p class="copyright">
+    <!-- &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> -->
+    &copy; 2020 - 2022 ChirpBox | Built with <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!-- <br>
+      style="margin-top:2.4em;margin-bottom:0em;"
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a> -->
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>

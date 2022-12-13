@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  <meta name="description" content="An Infrastructure-Less LoRa Testbed">
+  <meta name="keyword" content="hexo-theme, vuejs">
+  
+    <link rel="shortcut icon" href="/images/logo.png">
+  
+  <title>
+    
+      LoRaWAN | ChirpBox
+    
+  </title>
+  <link href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.css" rel="stylesheet">
+  <link href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/tomorrow.min.css" rel="stylesheet">
+  
+<link rel="stylesheet" href="/css/style.css">
+
+  
+    
+<link rel="stylesheet" href="/css/plugins/gitment.css">
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/geopattern/1.2.3/js/geopattern.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/nprogress/0.2.0/nprogress.min.js"></script>
+  
+    
+<script src="/js/qrious.js"></script>
+
+  
+  
+    
+<script src="/js/gitment.js"></script>
+
+  
+  
+  
+    <!-- MathJax support START -->
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <!-- MathJax support END -->
+  
+
+
+  
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-188073764-1"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'UA-188073764-1');
+    </script>
+
+<meta name="generator" content="Hexo 5.4.1"></head>
+<div class="wechat-share">
+  <img src="../images/logo.png" />
+</div>
+
+  <body>
+    <header class="header fixed-header">
+  <div class="header-container">
+    <a class="home-link" href="/">
+      <div class="logo"></div>
+      <span>ChirpBox</span>
+    </a>
+    <ul class="right-list">
+      
+        <li class="list-item">
+          
+            <a href="/get_started/" class="item-link">GET STARTED</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/diy_chirpbox/" class="item-link">DIY CHIRPBOX</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/LoRaWAN/" class="item-link">LORAWAN</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/topology/" class="item-link">TOPOLOGY</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/publications/" class="item-link">PUBLICATIONS</a>
+          
+        </li>
+      
+        <li class="list-item">
+          
+            <a href="/contacts/" class="item-link">CONTACTS</a>
+          
+        </li>
+      
+    </ul>
+    <div class="menu">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </div>
+    <div class="menu-mask">
+      <ul class="menu-list">
+        
+          <li class="menu-item">
+            
+              <a href="/get_started/" class="menu-link">GET STARTED</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/diy_chirpbox/" class="menu-link">DIY CHIRPBOX</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/LoRaWAN/" class="menu-link">LORAWAN</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/topology/" class="menu-link">TOPOLOGY</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/publications/" class="menu-link">PUBLICATIONS</a>
+            
+          </li>
+        
+          <li class="menu-item">
+            
+              <a href="/contacts/" class="menu-link">CONTACTS</a>
+            
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</header>
+
+    <main class="app-body flex-box">
+  <!-- Article START -->
+  <article class="post-article">
+    <!-- <h2>LoRaWAN</h2> -->
+    <section class="markdown-content"><p>This tutorial will show the setup of a LoRaWAN network, including configurations on gateway/end nodes and data workflow with scripts.</p>
+<h1 id="0-Prerequisites"><a href="#0-Prerequisites" class="headerlink" title="0. Prerequisites"></a>0. Prerequisites</h1><p>Hardware:</p>
+<ul>
+<li>Gateway: <a target="_blank" rel="noopener" href="https://uk.pi-supply.com/products/rak831-pilot-gateway-professional-demonstration-setup?lang=zh">RAK831 Pilot</a> / <a target="_blank" rel="noopener" href="https://store.rakwireless.com/products/rak7243c-pilot-gateway?utm_source=rak7243&utm_medium=footer&variant=26682434355300">RAK7243</a></li>
+<li>End node: <a target="_blank" rel="noopener" href="https://www.st.com/en/evaluation-tools/nucleo-l476rg.html">NUCLEO-L476RG</a> + <a target="_blank" rel="noopener" href="https://www.semtech.com/products/wireless-rf/lora-transceivers/sx1276mb1mas">SX1276MB1MAS</a></li>
+</ul>
+<p>Software:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://www.st.com/en/development-tools/stm32cubeide.html">STM32CubeIDE</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Example/LoRaWAN">LoRaWAN for ChirpBox</a></li>
+</ul>
+<h1 id="1-Gateway"><a href="#1-Gateway" class="headerlink" title="1. Gateway"></a>1. Gateway</h1><p><strong>1.</strong> Write the <a target="_blank" rel="noopener" href="https://downloads.rakwireless.com.cn/LoRaWAN%E6%A0%91%E8%8E%93%E6%B4%BE%E7%BD%91%E5%85%B3%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/RAK7243%28%E6%A0%91%E8%8E%93%E6%B4%BE3B%2B%29/%E5%9B%BA%E4%BB%B6/RAK7243_Latest_Firmware.zip">RAK7243 firmware image</a> in gateway, see how to write <a target="_blank" rel="noopener" href="https://downloads.rakwireless.com.cn/LoRaWAN%E6%A0%91%E8%8E%93%E6%B4%BE%E7%BD%91%E5%85%B3%E5%BC%80%E5%8F%91%E5%B9%B3%E5%8F%B0/%E5%B7%A5%E5%85%B7/How_to_write_LoRa_Gateway_Image_to_Micro_SD.pdf">here</a>.</p>
+<p><strong>2.</strong> Config the gateway with the build-in <a target="_blank" rel="noopener" href="https://www.chirpstack.io/">ChirpStack</a>, see <a target="_blank" rel="noopener" href="https://docs.rakwireless.com/Product-Categories/WisGate/RAK7243/Quickstart/#_2-using-an-independent-chirpstack">Quickstart</a>.</p>
+<p><strong>Note:</strong><br>The default mode for nodes joining LoRaWAN is OTAA. If nodes want to join with ABP mode, configuration of node should be modified as following:</p>
+<p><strong>Project configuration:</strong></p>
+<ul>
+<li>Define the marco <code>CHIRPBOX_LORAWAN_ABP</code> in the STM32Cube project:</li>
+</ul>
+<img src="/images/LoRaWAN/abp0.png" width="450">
+
+<p><strong>Chirpstack configuration:</strong></p>
+<ul>
+<li>Device profile set with <code>device_profile_abp</code> and click <code>disable frame-counter validation</code>.</li>
+</ul>
+<img src="/images/LoRaWAN/abp1.png" width="450">
+
+<ul>
+<li>Device address, network session and application session key should consist with the firmware.</li>
+</ul>
+<img src="/images/LoRaWAN/abp2.png" width="450">
+
+<ul>
+<li>Login to gateway and open <a target="_blank" rel="noopener" href="https://www.chirpstack.io/network-server/install/config/">chirpstack-network-server</a> configuration:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@rak-gateway:~ $ sudo nano ../../etc/chirpstack-network-server/chirpstack-network-server.toml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Change <code>disable_mac_commands=false</code> to <code>disable_mac_commands=true</code>, save and reboot the gateway.</li>
+</ul>
+<h1 id="2-End-node"><a href="#2-End-node" class="headerlink" title="2. End node"></a>2. End node</h1><p>The <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Example/LoRaWAN/STM32CubeExpansion_LRWAN_V1.3.1/Projects/STM32L476RG-Nucleo/Applications/LoRa/End_Node/STM32CubeIDE/sx1276mb1mas">example project</a> is based on <a target="_blank" rel="noopener" href="https://www.st.com/en/embedded-software/i-cube-lrwan.html">I-CUBE-LRWAN</a>, where modifications in this project are within the define-marco <code>CHIRPBOX_LORAWAN</code>.</p>
+<img src="/images/LoRaWAN/LoRaWAN-IDE-Symbol.png" width="450">
+
+<h1 id="3-Data-forwarding"><a href="#3-Data-forwarding" class="headerlink" title="3. Data forwarding"></a>3. Data forwarding</h1><h2 id="3-1-MQTT-to-MySQL-Database"><a href="#3-1-MQTT-to-MySQL-Database" class="headerlink" title="3.1 MQTT to MySQL Database"></a>3.1 MQTT to MySQL Database</h2><p>The MQTT integration can publish data from gateway bridge and application server in JSON format. In this tutorial, we store those retrieved data in MYSQL server.</p>
+<h3 id="3-1-1-Configuration"><a href="#3-1-1-Configuration" class="headerlink" title="3.1.1 Configuration"></a>3.1.1 Configuration</h3><p><strong>1.</strong> MQTT settings</p>
+<ul>
+<li>Login to gateway and open <a target="_blank" rel="noopener" href="https://www.chirpstack.io/gateway-bridge/install/config/">chirpstack-gateway-bridge</a> configuration:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@rak-gateway:~ $ sudo nano ../../etc/chirpstack-gateway-bridge/chirpstack-gateway-bridge.toml</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p>Change <code>marshaler=&quot;protobuf&quot;</code> to <code>marshaler=&quot;json&quot;</code>, save and reboot the gateway.</p>
+</li>
+<li><p>Use the <a target="_blank" rel="noopener" href="http://mqtt-explorer.com/">MQTT Explorer</a> to check if we can receive data through MQTT</p>
+<ul>
+<li>Login with the gateway host address and MQTT port</li>
+<li>See live events from gateway</li>
+</ul>
+</li>
+</ul>
+<img src="/images/LoRaWAN/mqtt1.png" width="500">
+<img src="/images/LoRaWAN/mqtt2.png" width="500">
+
+<p><strong>2.</strong> MYSQL settings</p>
+<ul>
+<li>Install <a target="_blank" rel="noopener" href="https://dev.mysql.com/downloads/installer/">MYSQL</a> and MYSQL GUI tool <a target="_blank" rel="noopener" href="https://www.navicat.com/en/products/navicat-for-mysql">Navicat</a> on Windows.</li>
+<li>After installation, start MYSQL service in command line with your MYSQL name, for example <code>MYSQLTEST</code>:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">net start mysqltest</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Create a new user <code>lorawan</code> with password <code>1111</code>, and grant privileges in MYSQL command line client:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">CREATE USER &#x27;lorawan&#x27;@&#x27;%&#x27; IDENTIFIED BY &#x27;1111&#x27;;</span><br><span class="line">GRANT ALL ON *.* TO &#x27;lorawan&#x27;@&#x27;%&#x27;;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Connect to MYSQL service with <code>lorawan</code> in Navicat:</li>
+</ul>
+<img src="/images/LoRaWAN/mqtt3.png" width="500">
+<img src="/images/LoRaWAN/mqtt4.png" width="500">
+
+<h3 id="3-1-2-Python-examples"><a href="#3-1-2-Python-examples" class="headerlink" title="3.1.2 Python examples"></a>3.1.2 Python examples</h3><p><strong>1.</strong> <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/blob/master/Miscellaneous/Example/LoRaWAN/Python_examples/MQTT/MQTT_events.py">MQTT live events</a></p>
+<ul>
+<li>This example subscribes and publishs the topic as shown in MQTT explorer, for example <code>application/2/#</code>.</li>
+<li>See topic name format <a target="_blank" rel="noopener" href="https://www.chirpstack.io/gateway-bridge/integrate/generic-mqtt/">here</a></li>
+</ul>
+<p><strong>2.</strong> <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/blob/master/Miscellaneous/Example/LoRaWAN/Python_examples/MQTT/MQTT_to_MYSQL.py">Log MQTT data to MYSQL database</a></p>
+<ul>
+<li>This example subscribes the topic <code>application/2/#</code> and saves data in the MYSQL database nased <code>LoRaWANChirpBox</code>.</li>
+<li>Table name is generated automatically according to the UTC time.</li>
+<li>We store the UTC time, device EUI, RX and TX information in the table, which can be seen through Navicat:</li>
+</ul>
+<img src="/images/LoRaWAN/mqtt5.png" width="500">
+
+
+<h2 id="3-2-ChirpStack-API"><a href="#3-2-ChirpStack-API" class="headerlink" title="3.2 ChirpStack API"></a>3.2 ChirpStack API</h2><p><a target="_blank" rel="noopener" href="https://www.chirpstack.io/application-server/api/">ChirpStack APIs</a> are provided to achieve data integration. See how to setup with following steps:</p>
+<h3 id="3-2-1-JWT-config"><a href="#3-2-1-JWT-config" class="headerlink" title="3.2.1 JWT config"></a>3.2.1 JWT config</h3><p><strong>1.</strong> JWT secret</p>
+<ul>
+<li>Login to gateway and generate a JWT secret</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@rak-gateway:~ $ openssl rand -base64 32</span><br></pre></td></tr></table></figure>
+<p>Get the result, for example: <code>UXAGc5YdnRhxSZsKFMwTegUOpgM/2uJzlxzpNdqrqk4=</code></p>
+<ul>
+<li>Open the <a target="_blank" rel="noopener" href="https://www.chirpstack.io/application-server/install/config/">chirpstack-application-server</a> configuration:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pi@rak-gateway:~ $ sudo nano ../../etc/chirpstack-application-server/chirpstack-application-server.toml</span><br></pre></td></tr></table></figure>
+<ul>
+<li>Change <code>jwt_secret</code> here accordingly:</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">jwt_secret=&quot;&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li><code>Ctrl</code> + <code>O</code> to save the configuration.</li>
+</ul>
+<p><strong>2.</strong> JWT token</p>
+<ul>
+<li>Open <a target="_blank" rel="noopener" href="https://jwt.io/">jwt.io</a> and input the decoded data with <strong>Header</strong> and <strong>Payload</strong> respectively:</li>
+</ul>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;alg&quot;</span><span class="punctuation">:</span> <span class="string">&quot;HS256&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;typ&quot;</span><span class="punctuation">:</span> <span class="string">&quot;JWT&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;iss&quot;</span><span class="punctuation">:</span> <span class="string">&quot;chirpstack-application-server&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;aud&quot;</span><span class="punctuation">:</span> <span class="string">&quot;chirpstack-application-server&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;sub&quot;</span><span class="punctuation">:</span> <span class="string">&quot;user&quot;</span><span class="punctuation">,</span></span><br><span class="line">  <span class="attr">&quot;username&quot;</span><span class="punctuation">:</span> <span class="string">&quot;admin&quot;</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>Replace <code>your-256-bit-secret</code> with the JWT secret (do not tick the <code>secret base64 encoded</code>)</li>
+<li>The JWT token is then shown in the left</li>
+</ul>
+<img src="/images/LoRaWAN/jwt-token.png" width="500">
+
+<ul>
+<li>If you want to verify if the JWT token is valid, go to the ChirpStack API web interface (<a target="_blank" rel="noopener" href="http://localhost:8080/api">http://localhost:8080/api</a>, localhost is the ip_address of the gateway):<ul>
+<li>Input JWT token on web interface</li>
+<li>Click <code>GET/api/applications</code>, press <code>Try it out!</code> below the page</li>
+<li>If the <code>Response Code</code> is not <code>200</code>, check above steps to make sure JWT secret and JWT token are correct.</li>
+</ul>
+</li>
+</ul>
+<img src="/images/LoRaWAN/jwt-token-web.png" width="250">
+<img src="/images/LoRaWAN/jwt-token-web-get.png" width="250">
+
+<p><strong>3.</strong> Network Address Translator (NAT)</p>
+<ul>
+<li>To build NAT of the gateway for external network access, download <a target="_blank" rel="noopener" href="https://dl-cdn.oray.com/hsk/linux/phtunnel_5_0_rapi_armhf.deb">Oray for Raspberry Pi</a> and put it in  <code>/home/pi/</code></li>
+<li>Execute following commands in the <code>/home/pi/</code> folder</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">pi@rak-gateway:~ $ sudo -s</span><br><span class="line">root@rak-gateway:/home/pi# dpkg -i phtunnel_5_0_rapi_armhf.deb</span><br></pre></td></tr></table></figure>
+<img src="/images/LoRaWAN/oray.png" width="300">
+
+<ul>
+<li>Control phddns with following commands and make sure it is online</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">phddns start | status | stop |restart | reset |enable (Turn on self-starting)|disable(Turn off self-starting) |version</span><br></pre></td></tr></table></figure>
+
+<img src="/images/LoRaWAN/oray-status.png" width="300">
+
+<ul>
+<li>Login to <a target="_blank" rel="noopener" href="http://b.oray.com/">Oray</a> with the SN code and password <code>admin</code></li>
+<li>Follow these steps to create the domain name connected to the gateway built-in ChirpStack</li>
+</ul>
+<img src="/images/LoRaWAN/oray-web1.png" width="500">
+<img src="/images/LoRaWAN/oray-web2.png" width="500">
+
+<ul>
+<li>Then we can access the ChirpStack through the Internet with created address: <code>https://33xxxxxxx.eicp.vip:xxxxx</code></li>
+</ul>
+<img src="/images/LoRaWAN/oray-web3.png" width="500">
+
+
+<h3 id="3-2-2-Python-examples"><a href="#3-2-2-Python-examples" class="headerlink" title="3.2.2 Python examples"></a>3.2.2 Python examples</h3><p><strong>1.</strong> <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/blob/master/Miscellaneous/Example/LoRaWAN/Python_examples/ChirpStack_API/downlink_device_classA.py">Enqueue downlink packets to the specified device</a></p>
+<ul>
+<li>This example is based on <a target="_blank" rel="noopener" href="https://www.chirpstack.io/application-server/api/python-examples/">Downlink to Device</a> provided by ChirpStack</li>
+</ul>
+<p><strong>2.</strong> <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/blob/master/Miscellaneous/Example/LoRaWAN/Python_examples/ChirpStack_API/downlink_group_classC.py">Enqueue downlink packets to group</a></p>
+<ul>
+<li>Update device profile to supply Class C (when using Class A, remember to untick the Class C support)</li>
+</ul>
+<img src="/images/LoRaWAN/classc1.png" width="600">
+
+<ul>
+<li>Add a multicast group with following configurations:</li>
+</ul>
+<img src="/images/LoRaWAN/classc2.png" width="600">
+
+<ul>
+<li>Add devices in this group:</li>
+</ul>
+<img src="/images/LoRaWAN/classc3.png" width="600">
+
+<ul>
+<li>Copy the group ID for Python codes:</li>
+</ul>
+<img src="/images/LoRaWAN/classc4.png" width="600">
+
+<h2 id="3-3-HTTP-integration"><a href="#3-3-HTTP-integration" class="headerlink" title="3.3 HTTP integration"></a>3.3 HTTP integration</h2><p>HTTP integration with the <a target="_blank" rel="noopener" href="https://pipedream.com/">Pipedream</a> platform is fast to achieve data retrieving from ChirpStack.</p>
+<h3 id="3-3-1-Pipedream"><a href="#3-3-1-Pipedream" class="headerlink" title="3.3.1 Pipedream"></a>3.3.1 Pipedream</h3><p><strong>1.</strong> Pipedream connection</p>
+<ul>
+<li>Sign in Pipedream and select <code>New</code>:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe1.png" width="600">
+
+<ul>
+<li>Select and create a source with following (default) configs:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe2.png" width="600">
+<img src="/images/LoRaWAN/pipe3.png" width="600">
+<img src="/images/LoRaWAN/pipe4.png" width="600">
+
+<ul>
+<li>Copy the HTTP endpoint:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe5.png" width="600">
+
+<ul>
+<li>Create the HTTP integration on ChirpStack’s application and paste the endpoint address:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe6.png" width="600">
+<img src="/images/LoRaWAN/pipe7.png" width="600">
+
+<ul>
+<li>Uplink LoRaWAN packets are shown as events in the inspector:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe8.png" width="600">
+
+<p><strong>2.</strong> Pipedream SQL service</p>
+<ul>
+<li>Scroll down the source and tick <code>Create Workflow</code>:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe9.png" width="600">
+
+<ul>
+<li>Set a name of this workflow and deploy it:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe10.png" width="600">
+
+<ul>
+<li>Turn on for listening new events, and then create a new action as <code>Send JSON to Pipedream SQL Service</code></li>
+</ul>
+<img src="/images/LoRaWAN/pipe11.png" width="600">
+
+<ul>
+<li>Input a <code>Table Name</code> and select path of <code>&#123;&#123;event&#125;&#125;</code> as <code>Payload</code>:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe12.png" width="600">
+
+<ul>
+<li>Select SQL and run <code>select * from lorawan_chirpbox</code> to query data (there is a 60-second delay of SQL for events):</li>
+</ul>
+<img src="/images/LoRaWAN/pipe13.png" width="600">
+
+<h3 id="3-3-2-Code-examples"><a href="#3-3-2-Code-examples" class="headerlink" title="3.3.2 Code examples"></a>3.3.2 Code examples</h3><p>Pipedream provides <a target="_blank" rel="noopener" href="https://pipedream.com/docs/api/rest/#overview">APIs</a> to retrieve events from source and SQL. Code examples are written in <code>cURL</code>, which can be converted to <code>Python</code> <a target="_blank" rel="noopener" href="https://curl.trillworks.com/#python">here</a>.</p>
+<p><strong>1.</strong> <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Example/LoRaWAN/Python_examples/Pipedream/Live_events">Live events</a></p>
+<ul>
+<li>Obtain Pipedream API key <a target="_blank" rel="noopener" href="https://pipedream.com/docs/api/auth/">here</a></li>
+<li>Get summary events and refresh them with <a target="_blank" rel="noopener" href="https://pipedream.com/docs/api/rest/#events">commands</a></li>
+<li>Check <code>source_id</code> click setting:</li>
+</ul>
+<img src="/images/LoRaWAN/pipe14.png" width="200">
+
+<ul>
+<li>Note: packet payload are encoded as base64 strings, see online decode <a target="_blank" rel="noopener" href="https://cryptii.com/pipes/base64-to-hex">tool</a>.</li>
+</ul>
+<p><strong>2.</strong> <a target="_blank" rel="noopener" href="https://github.com/sari-wesg/ChirpBox/tree/master/Miscellaneous/Example/LoRaWAN/Python_examples/Pipedream/DB_events">Database events</a></p>
+</section>
+    <!-- Tags START -->
+    
+  </article>
+  <div class="flex-wrapper">
+  </div>
+  <!-- Article END -->
+  <!-- Catalog START -->
+  
+  <aside class="catalog-container">
+  <div class="toc-main"style="color:#C93819">
+    <!-- <strong class="toc-title">LoRaWAN</strong> -->
+    
+      <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#0-Prerequisites"><span class="toc-nav-text">0. Prerequisites</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#1-Gateway"><span class="toc-nav-text">1. Gateway</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#2-End-node"><span class="toc-nav-text">2. End node</span></a></li><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#3-Data-forwarding"><span class="toc-nav-text">3. Data forwarding</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-1-MQTT-to-MySQL-Database"><span class="toc-nav-text">3.1 MQTT to MySQL Database</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-1-Configuration"><span class="toc-nav-text">3.1.1 Configuration</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-2-Python-examples"><span class="toc-nav-text">3.1.2 Python examples</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-2-ChirpStack-API"><span class="toc-nav-text">3.2 ChirpStack API</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-1-JWT-config"><span class="toc-nav-text">3.2.1 JWT config</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-2-Python-examples"><span class="toc-nav-text">3.2.2 Python examples</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-3-HTTP-integration"><span class="toc-nav-text">3.3 HTTP integration</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-1-Pipedream"><span class="toc-nav-text">3.3.1 Pipedream</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-2-Code-examples"><span class="toc-nav-text">3.3.2 Code examples</span></a></li></ol></li></ol></li></ol>
+    
+  </div>
+  </aside>
+  
+  <!-- Catalog END -->
+</main>
+</div>
+<script>
+  (function () {
+    var url = 'http://example.com/LoRaWAN/';
+    var banner = ''
+    $('#article-banner').css({
+      'background-image': 'url(https://www.accelerateyourambitions.com/wp-content/uploads/2019/10/green-paper-1.jpg)'
+    })
+
+    // error image
+    $(".markdown-content img").on('error', function () {
+      $(this).attr('src', 'http://file.muyutech.com/error-img.png')
+      $(this).css({
+        'cursor': 'default'
+      })
+    })
+
+    // zoom image
+    $(".markdown-content img").on('click', function () {
+      var src = $(this).attr('src')
+      if (src !== 'http://file.muyutech.com/error-img.png') {
+        var imageW = $(this).width()
+        var imageH = $(this).height()
+
+        var zoom = ($(window).width() * 0.95 / imageW).toFixed(2)
+        zoom = zoom < 1 ? 1 : zoom
+        zoom = zoom > 2 ? 2 : zoom
+        var transY = (($(window).height() - imageH) / 2).toFixed(2)
+
+        $('body').append('<div class="image-view-wrap"><div class="image-view-inner"><img src="' + src +
+          '" /></div></div>')
+        $('.image-view-wrap').addClass('wrap-active')
+        $('.image-view-wrap img').css({
+          'width': `${imageW}`,
+          'transform': `translate3d(0, ${transY}px, 0) scale3d(${zoom}, ${zoom}, 1)`
+        })
+        $('html').css('overflow', 'hidden')
+
+        $('.image-view-wrap').on('click', function () {
+          $(this).remove()
+          $('html').attr('style', '')
+        })
+      }
+    })
+  })();
+</script>
+<script>
+  function updateClock() {
+    var now = new Date(); // current date
+    // a cleaner way than string concatenation
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('time').innerHTML = [date, time].join(' ');
+
+    // call this function again in 1000ms
+    setTimeout(updateClock, 1000);
+  }
+  updateClock(); // initial call
+</script>
+
+<script>
+  function myFunction() {
+    var x = document.lastModified;
+    var now = new Date(x); // last modified date
+
+    // a cleaner way than string concatenation
+    months = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12']; // you get the idea
+    date = [now.getFullYear(), months[now.getMonth()], ("0" + now.getDate()).slice(-2)].join('-');
+    time = [("0" + now.getHours()).slice(-2), ("0" + now.getMinutes()).slice(-2), ("0" + now.getSeconds()).slice(-2)].join(':');
+
+    // set the content of the element with the ID time to the formatted string
+    document.getElementById('demo').innerHTML = [date, time].join(' ');
+  }
+  myFunction()
+</script>
+    <div class="scroll-top">
+  <span class="arrow-icon"></span>
+</div>
+    
+<footer class="app-footer">
+  <p class="copyright">
+    <!-- &copy; 2022 | Proudly powered by <a href="https://hexo.io" target="_blank">Hexo</a> -->
+    &copy; 2020 - 2022 ChirpBox | Built with <a href="https://hexo.io" target="_blank">Hexo</a>
+    <!-- <br>
+      style="margin-top:2.4em;margin-bottom:0em;"
+    Theme by <a target="_blank" rel="noopener" href="https://github.com/yanm1ng">yanm1ng</a> -->
+  </p>
+</footer>
+
+<script>
+  function async(u, c) {
+    var d = document, t = 'script',
+      o = d.createElement(t),
+      s = d.getElementsByTagName(t)[0];
+    o.src = u;
+    if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+    s.parentNode.insertBefore(o, s);
+  }
+</script>
+<script>
+  async("//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js", function(){
+    FastClick.attach(document.body);
+  })
+</script>
+
+<script>
+  var hasLine = 'true';
+  async("//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js", function(){
+    $('figure pre').each(function(i, block) {
+      var figure = $(this).parents('figure');
+      if (hasLine === 'false') {
+        figure.find('.gutter').hide();
+      }
+      var lang = figure.attr('class').split(' ')[1] || 'code';
+      var codeHtml = $(this).html();
+      var codeTag = document.createElement('code');
+      codeTag.className = lang;
+      codeTag.innerHTML = codeHtml;
+      $(this).attr('class', '').empty().html(codeTag);
+      figure.attr('data-lang', lang.toUpperCase());
+      hljs.highlightBlock(block);
+    });
+  })
+</script>
+<!-- Baidu Tongji -->
+
+
+<script src="/js/script.js"></script>
+
+  </body>
+</html>
